@@ -39,6 +39,7 @@ class BuildResponse extends BaseController
         return view('show_form', $data, $options);
     }
 
+    
     public function testCache()
     {
         $time = time();

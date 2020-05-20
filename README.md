@@ -1,55 +1,9 @@
-# CodeIgniter 4 Application Starter
+# CodeIgniter 4 Scratch course
 
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible, and secure. 
 More information can be found at the [official site](http://codeigniter.com).
-
-This repository holds a composer-installable app starter.
-It has been built from the 
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
-
-**This is pre-release code and should not be used in production sites.**
-
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
-
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/). 
-
-## Installation & updates
-
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
-
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-The user guide updating and deployment is a bit awkward at the moment, but we are working on it!
-
-## Repository Management
-
-We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script. 
-Problems with it can be raised on our forum, or as issues in the main repository.
 
 ## Server Requirements
 
@@ -64,3 +18,27 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
 - xml (enabled by default - don't turn it off)
+
+## Installation
+
+- [1.0 How to create Codeigniter4 project using Composer on windows] (https://www.youtube.com/watch?v=KA-1iyIvM4k)
+- [1.1 How to create Codeigniter4 project manually on windows] (https://www.youtube.com/watch?v=z4VvTCKvsGA)
+- [1.2 How to create Codeigniter4 project using git] (https://www.youtube.com/watch?v=rWzRECdzdDU)
+
+## Basic
+
+- [Application structure of Codeigniter 4 project | Brief introduction to file structure of CI4 project] (https://www.youtube.com/watch?v=0q7vUl6fzRw)
+- [2.1 Choices of available code editors for Codeigniter 4 project] (https://www.youtube.com/watch?v=bAi1a9N0BOk)
+
+## Beginner's guide to Codeigniter 4
+
+- [3 What is Model View Controller? | Introduction to MVC pattern in Codeigniter 4] (https://www.youtube.com/watch?v=pWB5RDAfq3I)
+- [4 Model in Codeigniter 4 | continue of MVC pattern in Codeigniter 4] (https://www.youtube.com/watch?v=0KZc-CWsnTc)
+- [5 How to display dynamic data on views from controller in Codeigniter4 | ProlongServices] (https://www.youtube.com/watch?v=pbkmLTOOSGM)
+- [6 How to handle basic HTTP request in controller in Codeigniter 4 | [GET, POST, REQUEST]] (https://www.youtube.com/watch?v=vNOtmkrRi88)
+- [7 Learn more about HTTP Request and HTTP Response in Codeigniter 4 | prolongservices] (https://www.youtube.com/watch?v=oVox2ut7_8w)
+- [8 Learn more about POST method in Codeigniter 4 | codeigniter tutorial | php] (https://www.youtube.com/watch?v=BNo4BQ-Hij8)
+- [9 How to enable debugging in codeigniter 4 | codeigniter 4 development mode] (https://www.youtube.com/watch?v=UBBJfQLBbp8)
+- [10 views in codeigniter 4 | Views, Multiple views, Foreach in views, if else in views] (https://www.youtube.com/watch?v=ICYYBNYcVn8)
+- [11 View cache, view cell and view cell cache in Codeigniter 4] (https://www.youtube.com/watch?v=QPe5fwa90P8)
+- [12 Custom Route, Grouping Routes, HTTP Verbs in Codeigniter 4 | Routes Codeigniter 4] (https://www.youtube.com/watch?v=PgJeslwRjwQ)
