@@ -1,0 +1,1 @@
+<h2>My custom 404 Page</h2>
