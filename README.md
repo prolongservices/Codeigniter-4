@@ -42,3 +42,4 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [10 views in codeigniter 4 | Views, Multiple views, Foreach in views, if else in views](https://www.youtube.com/watch?v=ICYYBNYcVn8)
 - [11 View cache, view cell and view cell cache in Codeigniter 4](https://www.youtube.com/watch?v=QPe5fwa90P8)
 - [12 Custom Route, Grouping Routes, HTTP Verbs in Codeigniter 4 | Routes Codeigniter 4](https://www.youtube.com/watch?v=PgJeslwRjwQ)
+- [13 Error handling in Codeigniter 4 | Handle Exceptions](https://www.youtube.com/watch?v=tHJGTI-_T0g)
