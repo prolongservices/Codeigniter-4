@@ -46,7 +46,7 @@ $routes->group('admin', function($routes){
 	
 });
 
-$routes->post('login', 'BuildResponse::loginForm');
+$routes->get('login', 'BuildResponse::loginForm');
 $routes->put('login', 'BuildResponse::loginForm');
 $routes->delete('login', 'BuildResponse::deleteUser');
 

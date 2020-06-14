@@ -9,7 +9,6 @@ class MyController extends BaseController {
         $model = new MyModel();
         $students = $model->findAll();
 
-        print_r($model->find(3)); die;
         return view('home');
     }
 
