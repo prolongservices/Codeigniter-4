@@ -19,7 +19,9 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('MyController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override();
+$routes->set404Override(function() {
+	return view('404');
+});
 
 $routes->setAutoRoute(true);
 
