@@ -10,22 +10,22 @@ class Filters extends BaseConfig
 		'csrf'     => \CodeIgniter\Filters\CSRF::class,
 		'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
-		'authfilter' => \App\Filters\AuthFilter::class,
-		'datefilter' => \App\Filters\DateFilter::class,
+		'dateFilter' => \App\Filters\DateFilter::class,
+		'authFilter' => \App\Filters\AuthFilter::class,
 	];
 
 	// Always applied before every request
 	public $globals = [
 		'before' => [
-			//'honeypot'
+			'honeypot',
 			// 'csrf',
-			'authfilter' => ['except' => ['login']],
-			'datefilter',
+			'dateFilter',
+			//'authFilter' => ['except' => ['login']]
 		],
 		'after'  => [
 			'toolbar',
-			//'honeypot',
-			'datefilter'
+			'honeypot',
+			'dateFilter'
 		],
 	];
 

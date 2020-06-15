@@ -44,3 +44,5 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [12 Custom Route, Grouping Routes, HTTP Verbs in Codeigniter 4 | Routes Codeigniter 4](https://www.youtube.com/watch?v=PgJeslwRjwQ)
 - [13 Error handling in Codeigniter 4 | Handle Exceptions](https://www.youtube.com/watch?v=tHJGTI-_T0g)
 - [14 How to create custom 404 page in Codeigniter 4](https://www.youtube.com/watch?v=HLWlxiMH8zo)
+- [15 How to use Controller Filters (after and before) in Codeigniter 4 | Security Feature](https://www.youtube.com/watch?v=e8P0UxNKzDk)
+- [16 How to use Honeypot to prevent from robots in Codeigniter 4 | Security Feature](https://www.youtube.com/watch?v=zo1GT8DSEdo)

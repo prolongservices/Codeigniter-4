@@ -41,7 +41,6 @@ class Student extends BaseController
 
         $email = $this->request->getVar('email');
         $name = $this->request->getPost('name');
-
         print_r($name);
     }
 
