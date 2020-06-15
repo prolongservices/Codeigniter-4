@@ -24,7 +24,8 @@ class Filters extends BaseConfig
 		],
 		'after'  => [
 			'toolbar',
-			//'honeypot'
+			//'honeypot',
+			'datefilter'
 		],
 	];
 

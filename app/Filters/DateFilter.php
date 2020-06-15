@@ -12,6 +12,6 @@ class DateFilter implements FilterInterface {
 
     public function after(RequestInterface $req, ResponseInterface $res)
     {
-        echo view('404');
+        return $res->setStatusCode(404, 'Due to filters.');
     }
 }
