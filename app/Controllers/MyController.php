@@ -34,6 +34,12 @@ class MyController extends BaseController {
         $this->response->setCache(['max-age' => 120]);
         $this->response->send();
     }
+
+    public function test_logging()
+    {
+        //log_message('error', 'logging error');
+        
+    }
 }
 
 

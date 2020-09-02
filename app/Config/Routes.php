@@ -50,6 +50,13 @@ $routes->get('login', 'BuildResponse::loginForm');
 $routes->put('login', 'BuildResponse::loginForm');
 $routes->delete('login', 'BuildResponse::deleteUser');
 
+$routes->post('ipChecker', 'LoginController::ipCheck');
+
+//users group routing
+$routes->group('user', function($routes){
+	$routes->add('add', 'UserController::add');
+});
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
