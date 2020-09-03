@@ -55,6 +55,9 @@ $routes->post('ipChecker', 'LoginController::ipCheck');
 //users group routing
 $routes->group('user', function($routes){
 	$routes->add('add', 'UserController::add');
+	$routes->add('update/(:num)', 'UserController::update/$1');
+	$routes->add('delete/(:num)', 'UserController::delete/$1');
+	$routes->add('list', 'UserController::list');
 });
 
 /**

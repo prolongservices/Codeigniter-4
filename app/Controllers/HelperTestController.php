@@ -13,6 +13,6 @@ class HelperTestController extends BaseController
     //print_r(now());
     //print_r(directory_map('.'));
     //echo write_file('./prolong.txt', 'created using filesystem helper function');
-    print_r(test_ran());
+    echo test_ran();
   }
 }

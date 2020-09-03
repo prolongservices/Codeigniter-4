@@ -1,8 +1,5 @@
 <?php
 
-if (! function_exists('test_ran'))
-{
-  function test_ran() {
-    return 123;
-  }
+function test_ran() {
+  return 156;
 }
