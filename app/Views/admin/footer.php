@@ -14,53 +14,75 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url('js/demo/chart-area-demo.js') ?>"></script>
 <script src="<?= base_url('js/demo/chart-pie-demo.js') ?>"></script>
-
-<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js"></script>
 
+
 <script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyDwryXt3F82bEwZW00MtJlfUcSSxMWDv0M",
-    authDomain: "admin-dashboard-b0cbd.firebaseapp.com",
-    projectId: "admin-dashboard-b0cbd",
-    storageBucket: "admin-dashboard-b0cbd.appspot.com",
-    messagingSenderId: "779440569317",
-    appId: "1:779440569317:web:ff6fed27c72157fd850d0c",
-    measurementId: "G-TRPWWWNMNF"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCITZQ354SOOSmElp5WEYOkvnuT9B7Tp-s",
+        authDomain: "ci4-firebase-7eb2d.firebaseapp.com",
+        projectId: "ci4-firebase-7eb2d",
+        storageBucket: "ci4-firebase-7eb2d.appspot.com",
+        messagingSenderId: "551568081824",
+        appId: "1:551568081824:web:7d5b2baddb344657081ac5",
+        measurementId: "G-G7FB02J0DX"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const fcm = firebase.messaging()
+    fcm.getToken({
+        vapidKey: 'BNq7dY7XYEZBETPjHGVyFQ_TlNfjQhyeFl5cghu8ru4SB_Xj2k-W1kwo_tO3UkTOeCRns8qhnTtzoMagkv5LqgE'
+    }).then((token) => {
+        console.log('getToken: ', token)
+    });
 
 
-  // Retrieve Firebase Messaging object.
-  const messaging = firebase.messaging();
 
-  // Get registration token. Initially this makes a network call, once retrieved
-  // subsequent calls to getToken will return from cache.
-  messaging.getToken({
-    vapidKey: 'BDRZzzVm6iZaZctzyehpyRX0auU-WfVjn9tF6LSfOSLhPxDHptnewOEutxdINidFYCcXSHf-3kYK9MTOU2gdkio'
-  }).then((currentToken) => {
-    if (currentToken) {
-      console.log('registration token available', currentToken)
-    } else {
-      // Show permission request.
-      console.log('No registration token available. Request permission to generate one.');
-    }
-  }).catch((err) => {
-    console.error('An error occurred while retrieving token. ', err);
-  });
+    fcm.onMessage((data) => {
+        console.log('onMessage: ', data)
+        let title = data['data']['title']
+        let body = data['data']['body']
+        //.badge-counter
+        let count = localStorage.getItem("notification-count");
+        if (count) {
+            localStorage.setItem("notification-count", parseInt(count) + 1);
+        } else {
+            localStorage.setItem("notification-count", 1);
+        }
 
-  messaging.onMessage((payload) => {
-    console.log('Message received. ', payload);
-  });
+        $('.badge-counter').text(localStorage.getItem("notification-count"))
+
+        $('#dropdown-container').append(
+            `<a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">${new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</div>
+                    <span class="font-weight-bold">${title}</span>
+                </div>
+            </a>`
+        )
+
+        //const pattern = /^\(\d+\)/
+
+        Notification.requestPermission((status) => {
+            console.log('requestPermission', status)
+            if (status === 'granted') {
+                
+                new Notification(title, {
+                    body: body
+                })
+            }
+        })
+    })
 </script>
-
 </body>
 
 </html>

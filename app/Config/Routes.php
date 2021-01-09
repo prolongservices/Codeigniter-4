@@ -43,6 +43,7 @@ $routes->group('admin', function($routes){
 		$routes->add('form', 'BuildResponse::show/45');
 		$routes->add('login', 'BuildResponse::loginForm');
 	});
+	$routes->add('home', 'Admin::home');
 	$routes->add('dashboard', 'Admin::dashboard');
 });
 
