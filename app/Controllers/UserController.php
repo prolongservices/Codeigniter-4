@@ -56,6 +56,7 @@ class UserController extends BaseController
       echo view('user/list', [
         'users' => $users
       ]);
+      //echo view('show_form');
       echo view('common/footer');
     }
     

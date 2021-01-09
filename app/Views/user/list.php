@@ -26,3 +26,4 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+<?= view('show_form') ?>
