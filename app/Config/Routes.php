@@ -54,6 +54,7 @@ $routes->put('login', 'BuildResponse::loginForm');
 $routes->delete('login', 'BuildResponse::deleteUser');
 
 $routes->post('ipChecker', 'LoginController::ipCheck');
+$routes->get('chat', 'ChatController::chat');
 
 //users group routing
 $routes->group('user', function($routes){

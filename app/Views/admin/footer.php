@@ -16,6 +16,7 @@
 <script src="<?= base_url('js/demo/chart-pie-demo.js') ?>"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
 
 
 <script>
@@ -32,6 +33,8 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
+    var myName = prompt("Enter your name");
 
     const fcm = firebase.messaging()
     let mToken;
