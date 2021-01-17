@@ -34,29 +34,32 @@
     firebase.initializeApp(firebaseConfig);
 
     const fcm = firebase.messaging()
+    let mToken;
     fcm.getToken({
         vapidKey: 'BNq7dY7XYEZBETPjHGVyFQ_TlNfjQhyeFl5cghu8ru4SB_Xj2k-W1kwo_tO3UkTOeCRns8qhnTtzoMagkv5LqgE'
     }).then((token) => {
         console.log('getToken: ', token)
+        mToken = token;
     });
 
 
 
     fcm.onMessage((data) => {
         console.log('onMessage: ', data)
-        let title = data['data']['title']
-        let body = data['data']['body']
-        //.badge-counter
-        let count = localStorage.getItem("notification-count");
+
+        let title = data['data']['title'];
+        let body = data['data']['body'];
+
+        //badge-counter
+        let count = localStorage.getItem("notification-count")
         if (count) {
-            localStorage.setItem("notification-count", parseInt(count) + 1);
+            localStorage.setItem('notification-count', parseInt(count) + 1)
         } else {
-            localStorage.setItem("notification-count", 1);
+            localStorage.setItem('notification-count', 1)
         }
+        $('#notification-counter').text(localStorage.getItem("notification-count"))
 
-        $('.badge-counter').text(localStorage.getItem("notification-count"))
-
-        $('#dropdown-container').append(
+        $('#notification-container').append(
             `<a class="dropdown-item d-flex align-items-center" href="#">
                 <div class="mr-3">
                     <div class="icon-circle bg-primary">
@@ -64,22 +67,50 @@
                     </div>
                 </div>
                 <div>
-                    <div class="small text-gray-500">${new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</div>
+                    <div class="small text-gray-500">${new Date().toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true})}</div>
                     <span class="font-weight-bold">${title}</span>
                 </div>
             </a>`
         )
 
-        //const pattern = /^\(\d+\)/
-
         Notification.requestPermission((status) => {
             console.log('requestPermission', status)
             if (status === 'granted') {
-                
+
                 new Notification(title, {
                     body: body
                 })
             }
+        })
+    })
+
+    $(document).ready(function() {
+        $('#btnLogin').on('click', function() {
+            console.log('Login button clicked.')
+
+            $("#btnLogin").attr("disabled", "disabled");
+            let email = $('#email').val();
+            let password = $('#password').val();
+
+            $.ajax({
+                url: "<?= base_url('admin/doLogin') ?>",
+                type: "POST",
+                data: {
+                    email: email,
+                    password: password,
+                    token: mToken
+                },
+                success: function(response) {
+                    console.log(response)
+                    let dataResult = JSON.parse(response)
+                    if (dataResult['status'] == '1') {
+                        window.location = '<?= base_url('admin/dashboard') ?>'
+                    }
+                },
+                error: function (jqXHR, err) {
+                    console.error(err);
+                }
+            })
         })
     })
 </script>

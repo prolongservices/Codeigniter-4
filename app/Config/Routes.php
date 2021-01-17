@@ -45,6 +45,8 @@ $routes->group('admin', function($routes){
 	});
 	$routes->add('home', 'Admin::home');
 	$routes->add('dashboard', 'Admin::dashboard');
+	$routes->add('login', 'Admin::login');
+	$routes->add('doLogin', 'Admin::doLogin');
 });
 
 $routes->get('login', 'BuildResponse::loginForm');
@@ -56,6 +58,7 @@ $routes->post('ipChecker', 'LoginController::ipCheck');
 //users group routing
 $routes->group('user', function($routes){
 	$routes->add('add', 'UserController::add');
+	$routes->add('register', 'UserController::register');
 	$routes->add('update/(:num)', 'UserController::update/$1');
 	$routes->add('delete/(:num)', 'UserController::delete/$1');
 	$routes->add('list', 'UserController::list');

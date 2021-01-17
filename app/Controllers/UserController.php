@@ -1,5 +1,7 @@
 <?php namespace App\Controllers;
 
+use App\Models\AdminModel;
+
 class UserController extends BaseController
 {
   public function add()
@@ -68,4 +70,28 @@ class UserController extends BaseController
     $model->delete($id);
     return redirect('user/list');
   }
+
+  public function register()
+  {
+    if ($this->request->getMethod() == 'get') {
+      //function is called to load view
+      echo view('common/header', [
+        'title' => 'Add user'
+      ]);
+      echo view('user/add');
+      echo view('common/footer');
+    }
+    else if ($this->request->getMethod() == 'post') {
+      //function is called to handle post action
+      $body = $this->request->getVar();
+      $model = new \App\Models\UserModel();
+      $res = $model->save($body);
+      if ($res) {
+        $this->sendNotification('New user registration', 'new user registered with email id ' . $body['email']);
+      }
+      return redirect();
+    }
+  }
+
+
 }
