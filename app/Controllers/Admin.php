@@ -41,4 +41,9 @@ class Admin extends BaseController
 
   }
 
+  public function firebaseDB()
+  {
+    return view('admin/firebase_db');
+  }
+
 }

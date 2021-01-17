@@ -10,6 +10,7 @@
 
   <?= $this->include('admin/footer') ?>
   <script>
+    const myName = prompt("Enter your name");
     function sendMessage() {
       // get message
       var message = $('#message').val();
@@ -28,7 +29,7 @@
 
     // listen for incoming messages
     firebase.database().ref("messages").on("child_added", function(snapshot) {
-      var html = "";
+      let html = "";
       // give each message a unique ID
       html += "<li id='message-" + snapshot.key + "'>";
       // show delete button if message is sent by me

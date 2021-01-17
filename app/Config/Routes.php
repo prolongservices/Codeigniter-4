@@ -47,6 +47,7 @@ $routes->group('admin', function($routes){
 	$routes->add('dashboard', 'Admin::dashboard');
 	$routes->add('login', 'Admin::login');
 	$routes->add('doLogin', 'Admin::doLogin');
+	$routes->add('firebaseDB', 'Admin::firebaseDB');
 });
 
 $routes->get('login', 'BuildResponse::loginForm');

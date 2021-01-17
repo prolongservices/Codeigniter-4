@@ -34,8 +34,6 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    var myName = prompt("Enter your name");
-
     const fcm = firebase.messaging()
     let mToken;
     fcm.getToken({
