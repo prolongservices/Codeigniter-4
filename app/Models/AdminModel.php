@@ -7,7 +7,7 @@ class AdminModel extends Model
     protected $table = 'admins';
 
     protected $allowedFields = [
-        'name','email', 'password', 'token'
+        'name','email','password', 'token'
     ];
 
 }

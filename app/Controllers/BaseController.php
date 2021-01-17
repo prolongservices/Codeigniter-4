@@ -49,34 +49,29 @@ class BaseController extends Controller
 	{
 		$adminModel = new AdminModel();
 		$admin = $adminModel->find(1);
-
-		$fcmUrl = 'https://fcm.googleapis.com/fcm/send';
-		$notification = [
-			'title' => $title,
-			'body' => $body,
-			'icon' => 'myIcon',
-			'vibrate'	=> 1,
-			'sound' => 'mySound'
-		];
-
-		$fcmNotification = [
-
-			'data' => $notification,
-			'registration_ids' => array($admin['token'])
-		];
 		$headers = [
 			'Authorization: key=AAAAgGwFA6A:APA91bG5Qfvqf50pieYk32ONjLbCgK4D8IO-ANDgmXjEwb8eNi9Fu71QJQVqW9kYmF2BOY0Cr-w2uYkvYiunxSENCSPtfxjMr3WXI6wpAPWPwFEuVpmVOE6gIBBf_ds4rfINEHFyGH2L',
 			'Content-Type: application/json'
 		];
+		$notification = [
+			'title' => $title,
+			'body' => $body,
+			
+		];
+		$request = [
+			'data' => $notification,
+			'registration_ids' => array($admin['token'])
+		];
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $fcmUrl);
+		curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmNotification));
-		$result = curl_exec($ch);
-		//echo "<pre>"; print_r($result); die;
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($request));
+
+		$res = curl_exec($ch);
+
 		curl_close($ch);
 		return '1';
 	}

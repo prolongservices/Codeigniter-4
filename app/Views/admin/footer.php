@@ -84,35 +84,33 @@
         })
     })
 
+    //ajax part
     $(document).ready(function() {
         $('#btnLogin').on('click', function() {
-            console.log('Login button clicked.')
+            $('#btnLogin').attr('disabled', 'disabled')
 
-            $("#btnLogin").attr("disabled", "disabled");
-            let email = $('#email').val();
-            let password = $('#password').val();
+            let email = $('#email').val()
+            let pass = $('#password').val()
 
             $.ajax({
-                url: "<?= base_url('admin/doLogin') ?>",
-                type: "POST",
+                url: '<?= base_url('admin/doLogin') ?>',
+                type: 'POST',
                 data: {
                     email: email,
-                    password: password,
-                    token: mToken
+                    password: pass,
+                    token: mToken,
                 },
-                success: function(response) {
-                    console.log(response)
-                    let dataResult = JSON.parse(response)
-                    if (dataResult['status'] == '1') {
-                        window.location = '<?= base_url('admin/dashboard') ?>'
-                    }
+                success: function (res) {
+                    console.log(res)
                 },
-                error: function (jqXHR, err) {
-                    console.error(err);
+                error: function (err) {
+
                 }
+
             })
         })
     })
+
 </script>
 </body>
 

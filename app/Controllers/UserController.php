@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\AdminModel;
+use App\Models\UserModel;
 
 class UserController extends BaseController
 {
@@ -84,14 +85,11 @@ class UserController extends BaseController
     else if ($this->request->getMethod() == 'post') {
       //function is called to handle post action
       $body = $this->request->getVar();
-      $model = new \App\Models\UserModel();
+      $model = new UserModel();
       $res = $model->save($body);
       if ($res) {
-        $this->sendNotification('New user registration', 'new user registered with email id ' . $body['email']);
+        $this->sendNotification('New Registration', 'New user registered with email id ' . $body['email']);
       }
-      return redirect();
     }
   }
-
-
 }

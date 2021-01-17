@@ -25,17 +25,20 @@ class Admin extends BaseController
     $email = $this->request->getVar('email');
     $password = $this->request->getVar('password');
     $token = $this->request->getVar('token');
+
     $data = $adminModel->where(array('email' => $email, 'password' => $password))->first();
     if ($data) {
       $adminModel->update($data['id'], array('token' => $token));
-      $response['status'] = '1';
-      $response['message'] = 'login successful';
+      $res['status'] = '1';
+      $res['message'] = 'Login successful';
     }
     else {
-      $response['status'] = '0';
-      $response['message'] = 'Invalid login';
-
+      $res['status'] = '0';
+      $res['message'] = 'Login failed';
     }
-    return json_encode($response);
+
+    return json_encode($res);
+
   }
+
 }
